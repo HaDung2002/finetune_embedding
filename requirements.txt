@@ -1,0 +1,8 @@
+llama-index==0.10.26
+llama-index-llms-huggingface==0.1.4
+llama-index-finetuning
+deep_translator
+bitsandbytes
+accelerate
+tensorflow==2.16.1
+transformer
