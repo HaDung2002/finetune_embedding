@@ -29,4 +29,4 @@ def finetuning(epochs, batch_size, model_id="BAAI/bge-m3", model_output_path="fi
 
     finetune_engine.finetune()
 
-finetuning(epochs=10, batch_size=8)
+finetuning(epochs=5, batch_size=2)
