@@ -4,7 +4,7 @@ from project_variables import SYTHETIC_DATA_DIR
 import os
 import json
 
-def finetuning(epochs, batch_size, model_id="BAAI/bge-m3", model_output_path="finetuned-bge-m3"):
+def finetuning(epochs, batch_size, evaluation_steps, model_id="BAAI/bge-m3", model_output_path="finetuned-bge-m3"):
     with open(os.path.join(SYTHETIC_DATA_DIR, 'train_dataset.json')) as json_data:
         dataset = json.load(json_data)
         train_dataset = EmbeddingQAFinetuneDataset(queries=dataset['queries'], 
@@ -23,10 +23,11 @@ def finetuning(epochs, batch_size, model_id="BAAI/bge-m3", model_output_path="fi
         model_id=model_id,
         model_output_path=model_output_path,
         val_dataset=val_dataset,
-        epochs = epochs,
-        batch_size = batch_size
+        epochs=epochs,
+        batch_size=batch_size,
+        evaluation_steps=evaluation_steps
     )
 
     finetune_engine.finetune()
 
-finetuning(epochs=5, batch_size=2)
+finetuning(epochs=5, batch_size=2, evaluation_steps=7000)
