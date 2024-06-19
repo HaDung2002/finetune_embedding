@@ -20,8 +20,9 @@ with open(os.path.join(SYTHETIC_DATA_DIR, 'val_dataset.json')) as json_data:
 finetune_engine = SentenceTransformersFinetuneEngine(
     train_dataset,
     model_id="BAAI/bge-m3",
-    model_output_path="finetuned_model",
+    model_output_path="finetuned-bge-m3",
     val_dataset=val_dataset,
+    epochs = 100
 )
 
 finetune_engine.finetune()

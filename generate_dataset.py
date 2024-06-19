@@ -96,16 +96,14 @@ def generate_synthetic_data(data_dir, save_path, llm, prompt_tmpl,):
     train_nodes, val_nodes = generate_training_data(data_dir)
     train_dataset = generate_qa_embedding_pairs(
         llm=llm,
-        #qa_generate_prompt_tmpl=prompt_tmpl,
         num_questions_per_chunk=4,
-        nodes=train_nodes[:5] + train_nodes[-5:],
+        nodes=train_nodes,
     )
     train_dataset = translate_data(train_dataset)
     val_dataset = generate_qa_embedding_pairs(
         llm=llm,
-        #qa_generate_prompt_tmpl=prompt_tmpl,
         num_questions_per_chunk=4,
-        nodes=val_nodes[:5] + val_nodes[-5:],
+        nodes=val_nodes,
     )
     val_dataset = translate_data(val_dataset)
 
